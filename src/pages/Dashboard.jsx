@@ -333,7 +333,7 @@ function VuePrincipale({ pubs, lives, allPubs, sponsorName }) {
                   <th style={{ ...thStyle('titre_texte'), textAlign: 'left' }}>Titre</th>
                   <th style={{ ...thStyle('plateforme'), textAlign: 'left' }}>Plat.</th>
                   <th style={{ ...thStyle('format'), textAlign: 'left' }}>Format</th>
-                  <th style={thStyle('vues')} onClick={() => handleSort('vues')}>Vues{sortKey==='vues'? sortDir==='desc'?' ↓':' ↑':''}</th>
+                  <th style={thStyle('vues')} onClick={() => handleSort('vues')}>Vues / Impr.{sortKey==='vues'? sortDir==='desc'?' ↓':' ↑':''}</th>
                   <th style={thStyle('engagement_total')} onClick={() => handleSort('engagement_total')}>Inter.{sortKey==='engagement_total'? sortDir==='desc'?' ↓':' ↑':''}</th>
                   <th style={thStyle('likes')} onClick={() => handleSort('likes')}>Likes</th>
                 </tr>
@@ -350,8 +350,8 @@ function VuePrincipale({ pubs, lives, allPubs, sponsorName }) {
                     </td>
                     <td style={{ padding: '6px 8px' }}><PlatPill plat={p.plateforme} /></td>
                     <td style={{ padding: '6px 8px' }}><FmtChip fmt={getFormat(p.type_contenu)} /></td>
-                    <td style={{ padding: '6px 8px', textAlign: 'right', fontWeight: sortKey === 'vues' ? 600 : 400, color: sortKey === 'vues' ? GW.red : GW.text }}>{fmtShort(p.vues)}</td>
-                    <td style={{ padding: '6px 8px', textAlign: 'right' }}>{fmtShort(p.engagement_total)}</td>
+                    <td style={{ padding: '6px 8px', textAlign: 'right', fontWeight: sortKey === 'vues' ? 600 : 400, color: sortKey === 'vues' ? GW.red : GW.text }}>  {fmtShort(['X/Twitter','Instagram'].includes(p.plateforme) ? p.impressions : p.vues)}  <span style={{ fontSize: '9px', color: GW.muted, marginLeft: '3px' }}>
+                    {['X/Twitter','Instagram'].includes(p.plateforme) ? 'impr.' : 'vues'}  </span> </td>
                     <td style={{ padding: '6px 8px', textAlign: 'right', color: GW.muted }}>{fmtShort(p.likes)}</td>
                   </tr>
                 )) : (
